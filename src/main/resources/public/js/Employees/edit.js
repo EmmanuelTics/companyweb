@@ -87,7 +87,7 @@ function showFilePreview(inputId, previewId, currentInputId) {
 
 // Función para obtener los datos del empleado y completar el formulario
 function fetchEmployeeData(name) {
-    fetch(`http://localhost:8080/employee/search/${encodeURIComponent(name)}`)
+    fetch(`https://webapicompany.onrender.com//employee/search/${encodeURIComponent(name)}`)
     .then(response => response.json())
     .then(data => {
         console.log('Datos del empleado recuperados:', data); 

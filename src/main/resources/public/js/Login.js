@@ -42,7 +42,7 @@ async function redirectToPage(event) {
 
     try {
         // Realizar la solicitud POST a la API
-        const response = await fetch("http://localhost:8080/user/login", {
+        const response = await fetch("https://webapicompany.onrender.com/user/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

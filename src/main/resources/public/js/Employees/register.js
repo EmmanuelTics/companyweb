@@ -68,7 +68,7 @@ document.getElementById('employeeForm').addEventListener('submit', function (e) 
             }];
 
             // Enviar los datos al servidor
-            fetch('http://localhost:8080/employee/add', {
+            fetch('https://webapicompany.onrender.com/employee/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

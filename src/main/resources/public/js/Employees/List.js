@@ -9,7 +9,7 @@ function editEmployee(name) {
 
 
 function fetchEmployees() {
-    fetch('http://localhost:8080/employee/get') 
+    fetch('https://webapicompany.onrender.com/employee/get') 
         .then(response => response.json())
         .then(data => {
             employees = data;
@@ -21,7 +21,7 @@ function fetchEmployees() {
 
 function eliminarEmpleado(name) {
 
-    fetch(`http://localhost:8080/employee/delete/${encodeURIComponent(name)}`, { 
+    fetch(`https://webapicompany.onrender.com//employee/delete/${encodeURIComponent(name)}`, { 
         method: 'DELETE',
     })
         .then(response => {
