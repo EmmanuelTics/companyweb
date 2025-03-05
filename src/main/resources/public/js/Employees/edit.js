@@ -1,15 +1,7 @@
 function goToTop() {
-    // Ocultar la tarjeta de éxito
-    document.getElementById('successCard').style.display = 'none';
-
-    // Mostrar la primera sección del formulario
-    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
-    document.getElementById('section-personal').style.display = 'block';
-
-    // Desplazar la página hasta el inicio
-    window.scrollTo(0, 0);
+    
+    window.location.href = 'ListEmployee.html';
 }
-
 
 function nextSection(nextId) {
     document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
@@ -244,3 +236,16 @@ document.getElementById('editForm').addEventListener('submit', function (e) {
         });
     });
 });
+
+
+document.getElementById('phone').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/[^\d]/g, ''); // Eliminar caracteres no numéricos
+
+    if (value.length > 3 && value.length <= 6) {
+      value = value.slice(0, 3) + '-' + value.slice(3);
+    } else if (value.length > 6) {
+      value = value.slice(0, 3) + '-' + value.slice(3, 6) + '-' + value.slice(6, 10);
+    }
+
+    e.target.value = value;
+  });
