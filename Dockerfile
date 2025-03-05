@@ -12,7 +12,8 @@ ENV PATH="$JAVA_HOME/bin:$PATH"
 COPY . .
 
 # Ejecuta Gradle para construir el proyecto
-RUN ./gradlew clean build
+RUN chmod +x ./gradlew && ./gradlew clean build
+
 
 # Etapa 2: Crear la imagen de ejecución
 FROM openjdk:17-jdk
