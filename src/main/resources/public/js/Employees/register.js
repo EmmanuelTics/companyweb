@@ -1,12 +1,11 @@
 function goToTop() {
-    // Ocultar la tarjeta de éxito
+
     document.getElementById('successCard').style.display = 'none';
 
-    // Mostrar la primera sección del formulario
     document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
     document.getElementById('section-personal').style.display = 'block';
 
-    // Desplazar la página hasta el inicio
+
     window.scrollTo(0, 0);
 }
 
@@ -31,22 +30,22 @@ function readFile(inputId, callback) {
 
     const reader = new FileReader();
     reader.onloadend = function () {
-        // Convertir el archivo a una cadena base64
-        const base64String = reader.result.split(',')[1]; // Remover la cabecera de base64
+       
+        const base64String = reader.result.split(',')[1]; 
         callback(base64String);
     };
-    reader.readAsDataURL(file); // Convertir el archivo a base64
+    reader.readAsDataURL(file); 
 }
 
 document.getElementById('employeeForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evitar el envío tradicional del formulario
+    e.preventDefault(); 
 
     const formData = new FormData(this);
 
-    // Leer archivos y convertirlos a base64
+
     readFile('birth_certificate', function (birthCertificateBase64) {
         readFile('ine', function (ineBase64) {
-            // Crear el objeto con los datos del formulario
+          
             const employeeData = [{
                 name: formData.get('name'),
                 address: formData.get('address'),
@@ -54,9 +53,9 @@ document.getElementById('employeeForm').addEventListener('submit', function (e) 
                 nationality: formData.get('nationality'),
                 maritalStatus: formData.get('maritalStatus'),
                 educationLevel: formData.get('educationLevel'),
-                birthCertificate: birthCertificateBase64, // Acta de nacimiento como base64
+                birthCertificate: birthCertificateBase64, 
                 rfc: formData.get('rfc'),
-                ine: ineBase64, // INE como base64
+                ine: ineBase64, 
                 curp: formData.get('curp'),
                 nss: formData.get('nss'),
                 phone: formData.get('phone'),
@@ -67,21 +66,21 @@ document.getElementById('employeeForm').addEventListener('submit', function (e) 
                 workstation: formData.get('workstation')
             }];
 
-            // Enviar los datos al servidor
+       
             fetch('https://webapicompany.onrender.com/employee/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(employeeData) // Enviar los datos como JSON
+                body: JSON.stringify(employeeData) 
             })
 
                 .then(response => {
                     if (response.ok) {
-                        // Mostrar la tarjeta de éxito
+                       
                         document.getElementById('successCard').style.display = 'block';
 
-                        // Limpiar el formulario
+                      
                         document.getElementById('employeeForm').reset();
 
                     } else {
@@ -92,14 +91,13 @@ document.getElementById('employeeForm').addEventListener('submit', function (e) 
                     console.error("Error al registrar el empleado:", error);
                 });
 
-            // Función para volver al inicio
 
         });
     });
 });
 
 document.getElementById('phone').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/[^\d]/g, ''); // Eliminar caracteres no numéricos
+    let value = e.target.value.replace(/[^\d]/g, ''); 
 
     if (value.length > 3 && value.length <= 6) {
       value = value.slice(0, 3) + '-' + value.slice(3);
