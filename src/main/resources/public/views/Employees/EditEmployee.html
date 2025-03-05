@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Empleado</title>
+    <link rel="stylesheet" href="../../css/Employees/register.css">
+</head>
+
+<body>
+    <h1>Actualizar Empleado</h1>
+    <form id="editForm" class="container">
+   
+        <div class="section" id="section-personal">
+            <h2>Información Personal</h2>
+            <div class="grid-columns">
+                <div>
+                    <label for="name">Nombre Completo:</label>
+                    <input type="text" id="name" name="name" placeholder="Escribe tu nombre completo" required>
+
+                    <label for="dob">Fecha de Nacimiento:</label>
+                    <input type="date" id="dob" name="birthdate" max="2025-02-04">
+
+                    <label for="marital_status">Estado Civil:</label>
+                    <select id="marital_status" name="maritalStatus">
+                        <option value="">Selecciona una opción</option>
+                        <option value="single">Soltero(a)</option>
+                        <option value="married">Casado(a)</option>
+                        <option value="divorced">Divorciado(a)</option>
+                        <option value="widowed">Viudo(a)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="address">Dirección:</label>
+                    <input type="text" id="address" name="address" placeholder="Escribe tu dirección">
+
+                    <label for="nationality">Nacionalidad:</label>
+                    <input type="text" id="nationality" name="nationality" placeholder="Ejemplo: Mexicana">
+
+                    <label for="education_level">Nivel de Estudios:</label>
+                    <select id="education_level" name="educationLevel">
+                        <option value="">Selecciona una opción</option>
+                        <option value="primary">Primaria</option>
+                        <option value="secondary">Secundaria</option>
+                        <option value="high_school">Preparatoria/Bachillerato</option>
+                        <option value="bachelor">Licenciatura</option>
+                        <option value="master">Maestría</option>
+                        <option value="doctorate">Doctorado</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" onclick="nextSection('section-documents')">Siguiente</button>
+        </div>
+
+        <!-- Documentación Oficial -->
+        <div class="section" id="section-documents" style="display: none;">
+
+            <label for="birth_certificate_input">Acta de Nacimiento:</label>
+            <input type="file" id="birth_certificate_input" name="birthCertificate" accept=".pdf,.jpg,.png">
+            <div id="birth-certificate-preview" class="pdf-container"></div>
+            <input type="hidden" id="current-birth-certificate" name="current-birth-certificate"
+                value="{{currentBirthCertificateBase64}}"> 
+
+        
+            <label for="rfc">RFC:</label>
+            <input type="text" id="rfc" name="rfc" maxlength="13" pattern="[A-ZÑ&]{3,4}[0-9]{6}[A-Z0-9]{3}"
+                title="El RFC debe contener entre 10 y 13 caracteres con el formato correcto."
+                placeholder="Escribe tu RFC">
+
+      
+            <label for="ine_input">INE:</label>
+            <input type="file" id="ine_input" name="ine" accept=".pdf,.jpg,.png">
+            <div id="ine-preview" class="pdf-container"></div>
+            <input type="hidden" id="current-ine" name="current-ine" value="{{currentIneBase64}}">
+          
+
+
+
+            <label for="curp">CURP:</label>
+            <input type="text" id="curp" name="curp" maxlength="18" pattern="[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z]{2}"
+                title="El CURP debe contener 18 caracteres con el formato correcto." placeholder="Escribe tu CURP">
+
+            <label for="nss">Número de Seguro Social:</label>
+            <input type="text" id="nss" name="nss" maxlength="11" pattern="\d{11}"
+                title="El NSS debe contener exactamente 11 dígitos." placeholder="Escribe tu NSS">
+
+            <div class="navigation">
+                <button type="button" onclick="prevSection('section-personal')">Atrás</button>
+                <button type="button" onclick="nextSection('section-contact')">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Información de Contacto -->
+        <div class="section" id="section-contact" style="display: none;">
+            <h2>Información de Contacto</h2>
+            <label for="phone">Teléfono de Contacto:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Ejemplo: 555-123-4567" pattern="\d{3}-\d{3}-\d{4}"
+                title="El teléfono debe seguir el formato 555-123-4567.">
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Ejemplo: correo@ejemplo.com">
+
+            <div class="navigation">
+                <button type="button" onclick="prevSection('section-documents')">Atrás</button>
+                <button type="button" onclick="nextSection('section-salary')">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Información Bancaria y Salario -->
+        <div class="section" id="section-salary" style="display: none;">
+            <h2>Información Bancaria y Salario</h2>
+            <label for="bank_account">Número de Cuenta Bancaria:</label>
+            <input type="text" id="bank_account" name="bankAccount" maxlength="18" pattern="\d{10,18}"
+                title="El número de cuenta bancaria debe contener entre 10 y 18 dígitos."
+                placeholder="Ejemplo: 1234567890">
+
+            <label for="bank_name">Nombre del Banco:</label>
+            <input type="text" id="bank_name" name="bankName" placeholder="Ejemplo: Bancomer">
+
+            <label for="salary">Salario:</label>
+            <input type="number" id="salary" name="salary" placeholder="Ejemplo: 15000" step="0.01" min="0">
+
+            <label for="position">Puesto:</label>
+            <input type="text" id="position" name="workstation" placeholder="Ejemplo: Gerente de Ventas">
+
+            <div class="navigation">
+                <button type="button" onclick="prevSection('section-contact')">Atrás</button>
+                <button type="submit">Actualizar Empleado</button>
+            </div>
+        </div>
+
+    </form>
+    <div id="successCard" class="card" style="display: none;">
+        <h3>¡Empleado actualizado exitosamente!</h3>
+        <p>Los datos del empleado han sido actualizados correctamente.</p>
+        <button onclick="goToTop()">Volver al inicio</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+
+
+    <script src="../../js/Employees/edit.js"></script>
+
+</body>
+
+</html>

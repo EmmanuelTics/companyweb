@@ -1,0 +1,8 @@
+
+
+openapi: 3.0.0
+info:
+  title: API de Empleados
+  description: Documentación de la API de empleados usando Swagger
+  version: 1.0.0
+paths: {}

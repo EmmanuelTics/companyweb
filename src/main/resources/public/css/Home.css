@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    background: url('../img/Logo.jpg') no-repeat center center/cover;
+    background-size: cover; /* Mantener la imagen adaptada */
+    background-position: center; /* Centrar la imagen */
+}
+
+h1 {
+    font-size: 8rem;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 5rem; /* Reducir tamaño de la fuente para pantallas más pequeñas */
+    }
+
+    p {
+        font-size: 1.2rem; /* Reducir tamaño de la fuente para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 4rem; /* Reducir aún más el tamaño de la fuente para pantallas muy pequeñas */
+    }
+
+    p {
+        font-size: 1rem; /* Reducir aún más el tamaño de la fuente para pantallas muy pequeñas */
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        background-size: contain; /* Ajustar la imagen para que quepa en pantallas de 320px */
+    }
+
+    h1 {
+        font-size: 3rem; /* Reducir aún más el tamaño del texto para pantallas extremadamente pequeñas */
+    }
+
+    p {
+        font-size: 0.9rem; /* Ajustar el tamaño de la fuente */
+    }
+}

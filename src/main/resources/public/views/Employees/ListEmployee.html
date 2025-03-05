@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    <link rel="stylesheet" href="../../css/Employees/List.css">
+</head>
+
+<body>
+    <h1>Lista de Empleados</h1>
+
+    <input type="text" id="search" placeholder="Buscar por nombre..." onkeyup="searchEmployee()">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Puesto</th>
+                <th>Salario</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Dirección</th   >
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="employee-list">
+
+        </tbody>
+    </table>
+
+    <div class="pagination" id="pagination"></div>
+
+    <script src="../../js/Employees/List.js"></script>
+</body>
+
+</html>
