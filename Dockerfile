@@ -11,6 +11,7 @@ ENV PATH="$JAVA_HOME/bin:$PATH"
 # Copia todos los archivos del proyecto al contenedor
 COPY . .
 
+COPY index.html /app/
 # Ejecuta Gradle para construir el proyecto
 RUN chmod +x ./gradlew && ./gradlew clean build
 
@@ -27,6 +28,8 @@ ENV PATH="$JAVA_HOME/bin:$PATH"
 
 # Copia el archivo JAR generado en la etapa de construcción
 COPY --from=build /app/build/libs/aplicacion-1.0.jar app.jar
+
+COPY --from=build /app/index.html /app/
 
 # Expone el puerto que usa la aplicación
 EXPOSE 8080
