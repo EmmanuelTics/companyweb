@@ -144,4 +144,6 @@ button:hover {
     background-color: #084298;
 }
 
-/* Estilo para el contenedor del PDF */
+.invalid {
+    border: 2px solid red;
+}

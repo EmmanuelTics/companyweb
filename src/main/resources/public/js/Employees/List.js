@@ -73,7 +73,7 @@ function displayEmployees(filteredEmployees = employees) {
         employeeList.appendChild(row);
     });
 
-    // Crear paginación
+ 
     const totalPages = Math.ceil(filteredEmployees.length / rowsPerPage);
     pagination.innerHTML = '';
     for (let i = 1; i <= totalPages; i++) {
