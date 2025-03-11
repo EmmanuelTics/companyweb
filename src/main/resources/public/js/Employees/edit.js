@@ -340,9 +340,7 @@ document.getElementById('phone').addEventListener('input', function (e) {
 
 
 
-function goToTop() {
-    location.reload();
-}
+
 
 function validateSection(sectionId) {
     const section = document.getElementById(sectionId);
