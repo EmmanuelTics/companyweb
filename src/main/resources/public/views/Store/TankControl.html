@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Supervisión de Cisternas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background-color: #f2a000;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .cisternas-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            gap: 20px;
+        }
+        .cisterna {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 180px;
+        }
+        .cisterna img {
+            width: 100px;
+            height: auto;
+            margin: 0 auto;
+        }
+        .alerta-ph, .nivel-agua {
+            margin: 10px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .llenado { background-color: #4dc3ff; color: white; }
+        .drenado { background-color: #ff4d4d; color: white; }
+        .bombeo { background-color: #28a745; color: white; }
+        .emergencia { background-color: #ffc107; color: black; }
+        .grafica {
+            margin: 20px auto;
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .grafica h3 {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Centro de Supervisión de Cisternas</div>
+
+    <div class="cisternas-container">
+        <div class="cisterna">
+            <img src="https://cdn-icons-png.flaticon.com/512/3065/3065303.png" alt="Cisterna">
+            <div class="alerta-ph">Alerta de PH: <span style="color: green;">Normal</span></div>
+            <div class="nivel-agua">Nivel de agua: <span style="color: green;">Óptimo</span></div>
+        </div>
+        <div class="cisterna">
+            <img src="https://cdn-icons-png.flaticon.com/512/3065/3065303.png" alt="Cisterna">
+            <div class="alerta-ph">Alerta de PH: <span style="color: red;">Crítico</span></div>
+            <div class="nivel-agua">Nivel de agua: <span style="color: red;">Alto</span></div>
+        </div>
+        <div class="cisterna">
+            <img src="https://cdn-icons-png.flaticon.com/512/3065/3065303.png" alt="Cisterna">
+            <div class="alerta-ph">Alerta de PH: <span style="color: yellow;">Moderado</span></div>
+            <div class="nivel-agua">Nivel de agua: <span style="color: green;">Óptimo</span></div>
+        </div>
+        <div class="cisterna">
+            <img src="https://cdn-icons-png.flaticon.com/512/3065/3065303.png" alt="Cisterna">
+            <div class="alerta-ph">Alerta de PH: <span style="color: green;">Normal</span></div>
+            <div class="nivel-agua">Nivel de agua: <span style="color: red;">Crítico</span></div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="llenado">Llenado</button>
+        <button class="drenado">Drenado</button>
+        <button class="bombeo">Bombeo</button>
+        <button class="emergencia">Paro de Emergencias</button>
+    </div>
+
+    <div class="grafica">
+        <h3>Gráfica de Nivel de Agua</h3>
+        <img src="https://www.gstatic.com/webp/gallery/4.sm.jpg" alt="Gráfica de Nivel de Agua">
+    </div>
+</body>
+</html>

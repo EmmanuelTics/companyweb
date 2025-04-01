@@ -6,7 +6,10 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.routing.*
-import routes.employeeRoutes // Importa las rutas de employees
+import routes.profileRoutes
+import routes.moduleRoutes
+import routes.profileModulesRoutes
+import routes.routesModulesRoutes
 import routes.userRoutes // Importa las rutas de employees
 import io.ktor.server.response.*
 import io.ktor.server.request.*
@@ -61,7 +64,7 @@ fun Application.module() {
     routing {
 
             static("/") {
-        resources("public") // Carpeta donde está `index.html`
+        resources("public") 
     }
 
        get("/") {
@@ -74,7 +77,10 @@ fun Application.module() {
                 }
             }
 
-        employeeRoutes()
-         userRoutes()  // Aquí se llaman las rutas definidas en RoutesEmployees.kt
+         userRoutes() 
+          profileRoutes() 
+          moduleRoutes()
+profileModulesRoutes()
+routesModulesRoutes()
     }
 }

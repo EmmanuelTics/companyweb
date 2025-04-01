@@ -1,13 +1,27 @@
 package config
 
-import models.Employee
-import models.User
-import org.litote.kmongo.KMongo
-import org.litote.kmongo.getCollection
+import java.sql.Connection
+import java.sql.DriverManager
 
 object Database {
-    private val client = KMongo.createClient("mongodb+srv://ema888176:Emmanuel123@companyemma.6mh1x.mongodb.net/?retryWrites=true&w=majority&appName=CompanyEmma") // Coloca aquí la cadena de conexión completa
-    private val database = client.getDatabase("CompanyEmma") // Nombre de la base de datos
-    val collection = database.getCollection<Employee>("Employee") // Colección "users"
-   val collectionUser = database.getCollection<User>("User")
+private const val URL = "jdbc:sqlserver://localhost:1433;databaseName=CompanyDB;encrypt=true;trustServerCertificate=true"
+
+    private const val USER = "sa"
+    private const val PASSWORD = "1234"
+
+    private var connection: Connection? = null
+
+    init {
+        try {
+            connection = DriverManager.getConnection(URL, USER, PASSWORD)
+            println("Conexión exitosa a SQL Server")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            println("Error al conectar a la base de datos: ${e.message}")
+        }
+    }
+
+    fun getConnection(): Connection? {
+        return connection
+    }
 }

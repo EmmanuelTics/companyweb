@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacén General</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background-color: #f4a000;
+            padding: 20px;
+            color: black;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+        }
+        .info-box {
+            display: flex;
+            justify-content: space-around;
+            background-color: #e6f2ff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 5%;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .add { background-color: #4caf50; color: white; }
+        .delete { background-color: #d9534f; color: white; }
+        .report { background-color: #f0ad4e; color: white; }
+        .restock { background-color: #0275d8; color: white; }
+        .search-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .search-container input {
+            padding: 5px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Almacén General</div>
+    
+    <div class="buttons">
+        <button class="add">Agregar Producto</button>
+        <button class="delete">Eliminar</button>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" placeholder="Buscar producto...">
+    </div>
+
+    <div class="container">
+        <div class="info-box">
+            <span>Total de productos: 150</span>
+            <span>Bajo stock: 5</span>
+            <span>Pronto reabastecer: 4</span>
+        </div>
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Unidad</th>
+                <th>Cantidad Mín.</th>
+                <th>Cantidad Máx.</th>
+                <th>Fecha de ingreso</th>
+                <th>Fecha de salida</th>
+                <th>Ubicación</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>Bultos de Maíz</td>
+                <td>Materia prima</td>
+                <td>80,000</td>
+                <td>KG</td>
+                <td>5,000</td>
+                <td>100,000</td>
+                <td>15/10/2024</td>
+                <td>15/11/2024</td>
+                <td>Área A, Estante 1</td>
+                <td style="color: green;">En stock</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Papel encerado</td>
+                <td>Empaque</td>
+                <td>16,000</td>
+                <td>Rollo</td>
+                <td>1,000</td>
+                <td>10,000</td>
+                <td>12/10/2024</td>
+                <td>12/11/2024</td>
+                <td>Área B, Estante 1</td>
+                <td style="color: green;">En stock</td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Harina de Trigo</td>
+                <td>Materia prima</td>
+                <td>50,000</td>
+                <td>KG</td>
+                <td>3,000</td>
+                <td>60,000</td>
+                <td>10/09/2024</td>
+                <td>10/10/2024</td>
+                <td>Área C, Estante 2</td>
+                <td style="color: orange;">Pronto reabastecer</td>
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>Gas LP</td>
+                <td>Combustible</td>
+                <td>10,000</td>
+                <td>Litros</td>
+                <td>2,000</td>
+                <td>15,000</td>
+                <td>08/08/2024</td>
+                <td>08/09/2024</td>
+                <td>Tanques externos</td>
+                <td style="color: red;">Bajo stock</td>
+            </tr>
+        </table>
+        
+        <div class="buttons">
+            <button class="restock">Reabastecer</button>
+            <button class="report">Generar Reporte</button>
+        </div>
+    </div>
+</body>
+</html>

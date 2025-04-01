@@ -10,7 +10,9 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+   maven { url = uri("https://microsoft.jfrog.io/artifactory/maven") }
 }
+
 
 application {
     mainClass.set("ApplicationKt")
@@ -21,7 +23,7 @@ implementation("io.ktor:ktor-server-core:2.3.4")
     implementation("io.ktor:ktor-server-netty:2.3.4")
     implementation("io.ktor:ktor-server-content-negotiation:2.3.4")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
-    implementation("org.litote.kmongo:kmongo:4.10.0")
+    implementation("com.microsoft.sqlserver:mssql-jdbc:12.2.0.jre11")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("io.ktor:ktor-server-status-pages:2.3.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")

@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Dashboard</title>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/Dashboard.css">
-  
 </head>
 
 <body>
@@ -19,114 +18,15 @@
         <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
-                    <i class="lni lni-grid-alt"></i>
+                    <img src="../img/menu.png" alt="Toggle Sidebar" style="width: 24px; height: 24px;">
                 </button>
+
                 <div class="sidebar-logo">
                     <a href="#">Empresa Tortillin</a>
                 </div>
             </div>
-            <ul class="sidebar-nav">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" id="inicioLink" data-bs-toggle="collapse"
-                        data-bs-target="#submenuInicio" aria-expanded="false">
-                        <i class="lni lni-home"></i>
-                        <span>INICIO</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuEmpleados"
-                        aria-expanded="false">
-                        <i class="lni lni-users"></i>
-                        <span>GESTIÓN DE EMPLEADOS</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuEmpleados">
-                        <li><a href="#" data-ruta="Employees/Register.html" onclick="cargarVista(event)"
-                                class="sidebar-link">Registrar Empleado</a></li>
-                        <li><a href="#" data-ruta="Employees/ListEmployee.html" onclick="cargarVista(event)"
-                                class="sidebar-link">Lista de Empleados</a></li>
-                        <li><a href="#" class="sidebar-link">Asignar Roles</a></li>
-                    </ul>
-                </li>
-                <!-- <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuAsistencias"
-                        aria-expanded="false">
-                        <i class="lni lni-calendar"></i>
-                        <span>CONTROL DE ASISTENCIAS</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuAsistencias">
-                        <li><a href="#" class="sidebar-link">Registrar asistencia</a></li>
-                        <li><a href="#" class="sidebar-link">Reporte de asistencias</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuNomina"
-                        aria-expanded="false">
-                        <i class="lni lni-wallet"></i>
-                        <span>GESTIÓN DE NÓMINA</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuNomina">
-                        <li><a href="#" class="sidebar-link">Generar nómina</a></li>
-                        <li><a href="#" class="sidebar-link">Historial de pagos</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuDistribucion"
-                        aria-expanded="false">
-                        <i class="fas fa-truck"></i>
-                        <span>DISTRIBUCIÓN Y LOGÍSTICA</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuDistribucion">
-                        <li><a href="#" class="sidebar-link">Asignacion de rutas</a></li>
-                        <li><a href="#" class="sidebar-link">Conntrol de entregas</a></li>
-                        <li><a href="#" class="sidebar-link">Reportes de entregas</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuCapacitacion"
-                        aria-expanded="false">
-                        <i class="lni lni-graduation"></i>
-                        <span>CAPACITACIÓN Y EVALUACIÓN</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuCapacitacion">
-                        <li><a href="#" class="sidebar-link">Cursos disponibles</a></li>
-                        <li><a href="#" class="sidebar-link">Historial de evaluaciones</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuSeguridad"
-                        aria-expanded="false">
-                        <i class="lni lni-shield"></i>
-                        <span>SEGURIDAD LABORAL</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuSeguridad">
-                        <li><a href="#" class="sidebar-link">Protocolos</a></li>
-                        <li><a href="#" class="sidebar-link">Reportar incidente</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuBeneficios"
-                        aria-expanded="false">
-                        <i class="lni lni-heart"></i>
-                        <span>BENEFICIOS Y BIENESTAR</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuBeneficios">
-                        <li><a href="#" class="sidebar-link">Planes de salud</a></li>
-                        <li><a href="#" class="sidebar-link">Beneficios extras</a></li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" data-bs-toggle="collapse" data-bs-target="#submenuConfiguracion"
-                        aria-expanded="false">
-                        <i class="lni lni-cog"></i>
-                        <span>CONFIGURACIÓN</span>
-                    </a>
-                    <ul class="collapse list-unstyled ps-4" id="submenuConfiguracion">
-                        <li><a href="#" class="sidebar-link">Gestion de roles y permisos</a></li>
-                        <li><a href="#" class="sidebar-link">Personalizacion del sistema</a></li>
-                        <li><a href="#" class="sidebar-link">Agustes generales</a></li>
-                    </ul>
-                </li>
- -->
+            <ul class="sidebar-nav" id="menuContainer">
+                <!-- Menú generado dinámicamente -->
             </ul>
             <div class="sidebar-footer">
                 <a href="Login.html" class="sidebar-link">
@@ -135,19 +35,18 @@
                 </a>
             </div>
         </aside>
+
         <div class="main"
             style="height: 100vh; overflow-y: auto; background-color: rgb(224, 229, 229); background-size: cover; background-position: center; background-attachment: fixed;">
-            <!-- Breadcrumbs -->
             <nav aria-label="breadcrumb" id="breadcrumbs">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#" onclick="cargarVista(event)" data-ruta="Home.html">Home</a>
                     </li>
-
                 </ol>
             </nav>
-            <!-- Contenido principal -->
+
             <div id="content" style="height: 100%;">
-                <iframe src="Home.html" style="height: 100%; width: 100%; border: none;"></iframe>
+                <iframe id="contentFrame" src="Home.html" style="height: 100%; width: 100%; border: none;"></iframe>
             </div>
         </div>
     </div>
@@ -155,9 +54,161 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const profileId = localStorage.getItem("profileId");
+            console.log("profileId desde localStorage:", profileId);
+
+            if (!profileId) {
+                console.error("No se encontró el profileId en el localStorage.");
+                return;
+            }
+
+            const apiUrl = `http://localhost:8080/Modules/getByProfile?idPerfil=${encodeURIComponent(profileId)}`;
+            const menuContainer = document.getElementById("menuContainer");
+
+            if (!menuContainer) {
+                console.error("No se encontró el elemento #menuContainer en el DOM.");
+                return;
+            }
+
+            async function loadMenuData() {
+                try {
+                    console.log("Haciendo solicitud a la API...");
+
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        console.error(`Error en la API: ${response.status} - ${response.statusText}`);
+                        throw new Error("No se pudo obtener la respuesta de la API.");
+                    }
+
+                    console.log("Respuesta de la API recibida.");
+                    const modules = await response.json();
+
+                    if (!Array.isArray(modules)) {
+                        console.error("La respuesta de la API no es un arreglo.");
+                        return;
+                    }
+
+                    menuContainer.innerHTML = "";
+                    modules.forEach(module => {
+                        menuContainer.appendChild(createMenuItem(module));
+                    });
+
+                } catch (error) {
+                    console.error("Error al cargar los datos del menú:", error);
+                }
+            }
+
+            function createMenuItem(module) {
+                const moduleItem = document.createElement("li");
+                moduleItem.className = "sidebar-item";
+
+                const moduleId = `submenu-${module.moduleName.replace(/\s+/g, "-").toLowerCase()}`;
+
+                const moduleLink = document.createElement("a");
+                moduleLink.href = "#";
+                moduleLink.className = "sidebar-link";
+                moduleLink.dataset.bsToggle = "collapse";
+                moduleLink.dataset.bsTarget = `#${moduleId}`;
+                moduleLink.setAttribute("aria-expanded", "false");
+                moduleLink.innerHTML = `
+            <i class="lni lni-folder"></i>
+            <span>${module.moduleName}</span>
+        `;
+
+                const submoduleList = document.createElement("ul");
+                submoduleList.className = "collapse list-unstyled ps-4";
+                submoduleList.id = moduleId;
+
+                if (Array.isArray(module.submodules) && module.submodules.length > 0) {
+                    module.submodules.forEach(submodule => {
+                        submoduleList.appendChild(createSubMenuItem(submodule));
+                    });
+                }
+
+                moduleItem.appendChild(moduleLink);
+                moduleItem.appendChild(submoduleList);
+
+                moduleLink.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    // Aseguramos que el sidebar se expanda primero
+                    const sidebar = document.getElementById("sidebar");
+                    if (!sidebar.classList.contains("expand")) {
+                        sidebar.classList.add("expand");
+                    }
+
+                    // Esperamos un pequeño retraso antes de abrir el submenú
+                    setTimeout(() => {
+                        const subMenu = document.getElementById(moduleId);
+                        if (subMenu) {
+                            const isExpanded = subMenu.classList.contains("collapse");
+                            if (isExpanded) {
+                                subMenu.classList.remove("collapse");
+                                subMenu.classList.add("show");
+                            } else {
+                                subMenu.classList.add("collapse");
+                                subMenu.classList.remove("show");
+                            }
+                        }
+                    }, 300); // Retraso de 300 ms para la transición del sidebar
+                });
+
+                return moduleItem;
+            }
+
+            function createSubMenuItem(submodule) {
+    const submoduleItem = document.createElement("li");
+
+    const submoduleLink = document.createElement("a");
+    submoduleLink.href = submodule.url || "#";
+    submoduleLink.className = "sidebar-link";
+    submoduleLink.textContent = submodule.name;
+    submoduleLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (submodule.url) {
+            document.getElementById("contentFrame").src = submodule.url;
+        }
+    });
+
+    submoduleItem.appendChild(submoduleLink);
+
+    // Verifica si hay submódulos y los procesa recursivamente
+    if (Array.isArray(submodule.submodules) && submodule.submodules.length > 0) {
+        const nestedSubmoduleList = document.createElement("ul");
+        nestedSubmoduleList.className = "collapse list-unstyled ps-4";
+        const nestedId = `submenu-${submodule.name.replace(/\s+/g, "-").toLowerCase()}`;
+        nestedSubmoduleList.id = nestedId;
+
+        submodule.submodules.forEach(nestedSub => {
+            nestedSubmoduleList.appendChild(createSubMenuItem(nestedSub)); // Recursión sin límite de nivel
+        });
+
+        const toggleLink = document.createElement("a");
+        toggleLink.href = "#";
+        toggleLink.className = "sidebar-link";
+        toggleLink.dataset.bsToggle = "collapse";
+        toggleLink.dataset.bsTarget = `#${nestedId}`;
+        toggleLink.innerHTML = `
+            <i class="lni lni-folder"></i>
+            <span>${submodule.name}</span>
+        `;
+
+        submoduleItem.innerHTML = "";
+        submoduleItem.appendChild(toggleLink);
+        submoduleItem.appendChild(nestedSubmoduleList);
+    }
+
+    return submoduleItem;
+}
+
+            loadMenuData();
+        });
+
+    </script>
     <script src="../js/Dashboard.js"></script>
-
-
 </body>
 
 </html>
