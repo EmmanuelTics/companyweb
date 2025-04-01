@@ -4,10 +4,10 @@ import java.sql.Connection
 import java.sql.DriverManager
 
 object Database {
-private const val URL = "jdbc:sqlserver://localhost:1433;databaseName=CompanyDB;encrypt=true;trustServerCertificate=true"
+private const val URL = "jdbc:sqlserver://CompanyDb.mssql.somee.com;databaseName=CompanyDb;encrypt=true;trustServerCertificate=true"
 
-    private const val USER = "sa"
-    private const val PASSWORD = "1234"
+    private const val USER = "Cooker222_SQLLogin_1"
+    private const val PASSWORD = "ezfga61q7i"
 
     private var connection: Connection? = null
 

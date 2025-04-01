@@ -42,7 +42,7 @@ inputs.forEach(input => {
     
         try {
             // Realizar la solicitud POST a la API
-            const response = await fetch("http://localhost:8080/user/login", {
+            const response = await fetch("https://companyweb-4qwq.onrender.com/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
