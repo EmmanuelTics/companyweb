@@ -29,7 +29,7 @@
     <table class="table table-bordered table-striped table-hover" id="modulesTable">
       <thead>
         <tr>
-          <th>ID Módulo</th>
+          <th></th>
           <th>Módulo</th>
           <th>Submódulo(s)</th>
           <th>Agregar</th>
@@ -78,88 +78,116 @@
     }
 
     // Función para cargar módulos y submódulos para el perfil seleccionado
-    async function loadModules(profileId) {
-      try {
-        const modules = await fetchData(`${apiBaseUrl}/modules/get`);
-        const permissions = await fetchData(`${apiBaseUrl}/profileModule/getPermissions/${profileId}`);
+  // Función para cargar módulos y submódulos para el perfil seleccionado
+// Función para cargar módulos y submódulos para el perfil seleccionado
+async function loadModules(profileId) {
+  try {
+    const modules = await fetchData(`${apiBaseUrl}/modules/get`);
+    const permissions = await fetchData(`${apiBaseUrl}/profileModule/getPermissions/${profileId}`);
 
-        const modulesTableBody = document.getElementById("modulesTableBody");
-        modulesTableBody.innerHTML = "";
+    const modulesTableBody = document.getElementById("modulesTableBody");
+    modulesTableBody.innerHTML = "";
 
-        // Función recursiva para procesar submódulos hijos (hasta 5 niveles)
-        function processSubmodules(submodule, module, parentSubmoduleName = '', level = 1) {
-          console.log(`Procesando submódulo ${submodule.name} con ID ${submodule.idSubmodulo}, Nivel ${level}`);
+    let moduleIndex = 1; // Inicia la numeración de los módulos
 
-          if (level > 5) return; // Limitar a 5 niveles de submódulos
+    // Función recursiva para procesar submódulos hijos (hasta 5 niveles)
+    function processSubmodules(submodule, module, parentSubmoduleName = '', level = 1) {
+      console.log(`Procesando submódulo ${submodule.name} con ID ${submodule.idSubmodulo}, Nivel ${level}`);
 
-          // Concatenar el nombre del submódulo padre si existe
-          const fullSubmoduleName = parentSubmoduleName ? `${parentSubmoduleName} - ${submodule.name}` : submodule.name;
+      if (level > 5) return; // Limitar a 5 niveles de submódulos
 
-          // Buscar los permisos a nivel de submódulo
-          const submodulePermissions = permissions.filter(p => p.idPerfil == profileId && p.idSubmodulo == submodule.idSubmodulo);
+      // Concatenar el nombre del submódulo padre si existe
+      const fullSubmoduleName = parentSubmoduleName ? `${parentSubmoduleName} - ${submodule.name}` : submodule.name;
 
-          // Si no hay permisos para este submódulo, no lo procesamos
-          if (submodulePermissions.length === 0 && !submodule.children) {
-            return;
-          }
+      // Buscar los permisos a nivel de submódulo
+      const submodulePermissions = permissions.filter(p => p.idPerfil == profileId && p.idSubmodulo == submodule.idSubmodulo);
 
-          // Crear una fila de la tabla para este submódulo
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${module.moduleId}</td>
-            <td>${module.modulename || "Sin nombre"}</td>
-            <td>${fullSubmoduleName}</td>
-            ${["bitAgregar", "bitEditar", "bitEliminar", "bitConsultar", "bitExportar", "bitBitacora"].map(permisoKey => {
-              const checked = submodulePermissions.some(permiso => permiso[permisoKey]) ? "checked" : "";
-              return `
-                <td>
-                  <input type="checkbox" 
-                    data-idperfil="${profileId}" 
-                    data-idmodulo="${module.moduleId}" 
-                    data-idsubmodulo="${submodule.idSubmodulo}" 
-                    data-permiso="${permisoKey}" 
-                    ${checked}>
-                </td>
-              `;
-            }).join("")}
+      // Si no hay permisos para este submódulo, no lo procesamos
+      if (submodulePermissions.length === 0 && !submodule.children) {
+        return;
+      }
+
+      // Crear una fila de la tabla para este submódulo
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${moduleIndex++}</td> <!-- Aquí se muestra el número secuencial en lugar del ID del módulo -->
+        <td>${module.modulename || "Sin nombre"}</td>
+        <td>${fullSubmoduleName}</td>
+        ${["bitAgregar", "bitEditar", "bitEliminar", "bitConsultar", "bitExportar", "bitBitacora"].map(permisoKey => {
+          const checked = submodulePermissions.some(permiso => permiso[permisoKey]) ? "checked" : "";
+          return `
+            <td>
+              <input type="checkbox" 
+                data-idperfil="${profileId}" 
+                data-idmodulo="${module.moduleId}" 
+                data-idsubmodulo="${submodule.idSubmodulo}" 
+                data-permiso="${permisoKey}" 
+                ${checked}>
+            </td>
           `;
-          modulesTableBody.appendChild(row);
+        }).join("")}
+      `;
+      modulesTableBody.appendChild(row);
 
-          // Procesar recursivamente los submódulos hijos si los hay
-          if (submodule.children) {
-            submodule.children.forEach(child => processSubmodules(child, module, fullSubmoduleName, level + 1));
-          }
-        }
-
-        // Iterar sobre los módulos y procesar sus submódulos
-        modules.forEach(module => {
-          // Asegurarse de que cada módulo tiene un array de submódulos
-          if (!Array.isArray(module.submodules)) {
-            console.warn(`El módulo ${module.moduleId} tiene submódulos en formato incorrecto:`, module.submodules);
-            return;
-          }
-
-          // Buscar permisos a nivel de módulo
-          const modulePermissions = permissions.filter(p => p.idPerfil == profileId && p.idModulo == module.moduleId);
-
-          // Procesar solo los submódulos hijos, ignorando el submódulo principal
-          module.submodules.forEach(submodule => {
-            if (submodule.children && submodule.children.length > 0) {
-              // Si el submódulo tiene hijos, solo procesamos los hijos, no el submódulo padre
-              submodule.children.forEach(child => processSubmodules(child, module, submodule.name));
-            } else {
-              // Si el submódulo no tiene hijos, lo procesamos normalmente
-              processSubmodules(submodule, module);
-            }
-          });
-        });
-
-        console.log("Tabla de módulos cargada correctamente.");
-
-      } catch (error) {
-        console.error("Error al cargar módulos o permisos:", error);
+      // Procesar recursivamente los submódulos hijos si los hay
+      if (submodule.children) {
+        submodule.children.forEach(child => processSubmodules(child, module, fullSubmoduleName, level + 1));
       }
     }
+
+    // Iterar sobre los módulos y procesar sus submódulos
+    modules.forEach(module => {
+      // Asegurarse de que cada módulo tiene un array de submódulos
+      if (!Array.isArray(module.submodules)) {
+        console.warn(`El módulo ${module.moduleId} tiene submódulos en formato incorrecto:`, module.submodules);
+        return;
+      }
+
+      // Buscar permisos a nivel de módulo
+      const modulePermissions = permissions.filter(p => p.idPerfil == profileId && p.idModulo == module.moduleId);
+
+      // Si el módulo tiene submódulos, procesar sus submódulos
+      if (module.submodules.length > 0) {
+        module.submodules.forEach(submodule => {
+          if (submodule.children && submodule.children.length > 0) {
+            // Si el submódulo tiene hijos, solo procesamos los hijos, no el submódulo padre
+            submodule.children.forEach(child => processSubmodules(child, module, submodule.name));
+          } else {
+            // Si el submódulo no tiene hijos, lo procesamos normalmente
+            processSubmodules(submodule, module);
+          }
+        });
+      } else {
+        // Si el módulo no tiene submódulos, se agrega directamente a la tabla
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${moduleIndex++}</td>
+          <td>${module.modulename || "Sin nombre"}</td>
+          <td>No tiene submódulos</td>
+          ${["bitAgregar", "bitEditar", "bitEliminar", "bitConsultar", "bitExportar", "bitBitacora"].map(permisoKey => {
+            const checked = modulePermissions.some(permiso => permiso[permisoKey]) ? "checked" : "";
+            return `
+              <td>
+                <input type="checkbox" 
+                  data-idperfil="${profileId}" 
+                  data-idmodulo="${module.moduleId}" 
+                  data-permiso="${permisoKey}" 
+                  ${checked}>
+              </td>
+            `;
+          }).join("")}
+        `;
+        modulesTableBody.appendChild(row);
+      }
+    });
+
+    console.log("Tabla de módulos cargada correctamente.");
+
+  } catch (error) {
+    console.error("Error al cargar módulos o permisos:", error);
+  }
+}
+
 
     // Función para loggear los datos de permisos
     function logPermissionsData(permissionsData) {
